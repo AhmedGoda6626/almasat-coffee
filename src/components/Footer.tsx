@@ -1,4 +1,5 @@
 import React from 'react';
+import { Phone, Instagram, Facebook, Music } from "lucide-react"; // أو أيقونات مناسبة
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -33,50 +34,50 @@ const Footer: React.FC = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-4 space-x-reverse mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-gold-500 to-gold-600 rounded-full flex items-center justify-center">
-                <span className="text-xl text-white">☕</span>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">محمصة الماسة</h3>
-                <p className="text-gold-200">Almasat Roastery</p>
-              </div>
-            </div>
-            <p className="text-gray-300 leading-relaxed mb-6">
-              نقدم لك أجود أنواع القهوة والمشروبات الساخنة والباردة في أجواء مميزة. 
-              أكثر من 52 نوع مشروب مختلف لتناسب جميع الأذواق.
-            </p>
-            <div className="flex space-x-4 space-x-reverse">
-              <button
-                onClick={handleWhatsAppContact}
-                className="bg-green-500 hover:bg-green-600 p-3 rounded-lg transition-colors"
-                aria-label="واتساب"
-              >
-                <span className="text-lg">💬</span>
-              </button>
-              <button
-                onClick={handleInstagramVisit}
-                className="bg-pink-500 hover:bg-pink-600 p-3 rounded-lg transition-colors"
-                aria-label="إنستجرام"
-              >
-                <span className="text-lg">📸</span>
-              </button>
-              <button
-                onClick={handleFacebookVisit}
-                className="bg-blue-500 hover:bg-blue-600 p-3 rounded-lg transition-colors"
-                aria-label="فيسبوك"
-              >
-                <span className="text-lg">👥</span>
-              </button>
-              <button
-                onClick={handleTikTokVisit}
-                className="bg-gray-700 hover:bg-gray-800 p-3 rounded-lg transition-colors"
-                aria-label="تيك توك"
-              >
-                <span className="text-lg">🎤</span>
-              </button>
-            </div>
-          </div>
+  <div className="flex items-center space-x-4 space-x-reverse mb-6">
+    <div className="w-12 h-12 bg-gradient-to-br from-gold-500 to-gold-600 rounded-full flex items-center justify-center">
+      <span className="text-xl text-white">☕</span>
+    </div>
+    <div>
+      <h3 className="text-xl font-bold">محمصة الماسة</h3>
+      <p className="text-gold-200">Almasat Roastery</p>
+    </div>
+  </div>
+  <p className="text-gray-300 leading-relaxed mb-6">
+    نقدم لك أجود أنواع القهوة والمشروبات الساخنة والباردة في أجواء مميزة. 
+    أكثر من 52 نوع مشروب مختلف لتناسب جميع الأذواق.
+  </p>
+  <div className="flex space-x-4 space-x-reverse">
+    <button
+      onClick={handleWhatsAppContact}
+      className="bg-green-500 hover:bg-green-600 p-3 rounded-lg transition-colors"
+      aria-label="واتساب"
+    >
+      <Phone className="w-5 h-5 text-white" />
+    </button>
+    <button
+      onClick={handleInstagramVisit}
+      className="bg-pink-500 hover:bg-pink-600 p-3 rounded-lg transition-colors"
+      aria-label="إنستجرام"
+    >
+      <Instagram className="w-5 h-5 text-white" />
+    </button>
+    <button
+      onClick={handleFacebookVisit}
+      className="bg-blue-500 hover:bg-blue-600 p-3 rounded-lg transition-colors"
+      aria-label="فيسبوك"
+    >
+      <Facebook className="w-5 h-5 text-white" />
+    </button>
+    <button
+      onClick={handleTikTokVisit}
+      className="bg-gray-700 hover:bg-gray-800 p-3 rounded-lg transition-colors"
+      aria-label="تيك توك"
+    >
+      <Music className="w-5 h-5 text-white" />
+    </button>
+  </div>
+</div>
 
           {/* Quick Links */}
           <div>
