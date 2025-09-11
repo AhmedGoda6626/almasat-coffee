@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../store/useStore';
+import DarkModeToggle from '../components/DarkModeToggle';
 
 const AuthPage: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -65,6 +66,9 @@ const AuthPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gold-50 via-brown-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center p-4">
+      <div className="absolute top-4 left-4">
+        <DarkModeToggle />
+      </div>
       <div className="w-full max-w-md">
         {/* Logo and Welcome */}
         <div className="text-center mb-8">
