@@ -9,6 +9,7 @@ import {
   MessageCircle,
   Building2,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Contact: React.FC = () => {
   const handleWhatsAppContact = () => {
@@ -60,7 +61,13 @@ const Contact: React.FC = () => {
       <div className="container mx-auto px-3 sm:px-4 lg:px-6">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12 sm:mb-16">
+          <motion.div 
+            className="text-center mb-12 sm:mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <h2 className="text-3xl sm:text-4xl font-bold text-brown-800 dark:text-brown-200 mb-3 sm:mb-4">
               تواصل معنا
             </h2>
@@ -70,12 +77,18 @@ const Contact: React.FC = () => {
             <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400 mt-2">
               فرع القاهرة الجديدة • فرع الشروق
             </p>
-          </div>
+          </motion.div>
 
           {/* Two Locations */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16">
             {/* New Cairo Branch */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 shadow-lg transition-colors duration-200">
+            <motion.div 
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 shadow-lg transition-colors duration-200"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
               <h3 className="text-xl sm:text-2xl font-bold text-brown-800 dark:text-brown-200 mb-6 sm:mb-8 text-center flex items-center justify-center gap-2">
                 <Building2 className="w-6 h-6 text-brown-600 dark:text-brown-300" />
                 فرع القاهرة الجديدة
@@ -83,7 +96,13 @@ const Contact: React.FC = () => {
 
               <div className="space-y-4 sm:space-y-6">
                 {/* WhatsApp New Cairo */}
-                <div className="flex items-start gap-4">
+                <motion.div 
+                  className="flex items-start gap-4"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
+                >
                   <div className="bg-green-100 dark:bg-green-900 p-3 rounded-lg transition-colors duration-200">
                     <MessageCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
                   </div>
@@ -97,17 +116,25 @@ const Contact: React.FC = () => {
                     >
                       01098981616
                     </p>
-                    <button
+                    <motion.button
                       onClick={handleWhatsAppContact}
                       className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
                       راسلنا على واتساب
-                    </button>
+                    </motion.button>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* New Cairo Location */}
-                <div className="flex items-start gap-4">
+                <motion.div 
+                  className="flex items-start gap-4"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.3 }}
+                >
                   <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg transition-colors duration-200">
                     <MapPin className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                   </div>
@@ -118,19 +145,27 @@ const Contact: React.FC = () => {
                     <p className="text-gray-700 dark:text-gray-300 mb-2">
                       القاهرة الجديدة
                     </p>
-                    <button
+                    <motion.button
                       onClick={handleNewCairoLocation}
                       className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
                       افتح الموقع على خرائط جوجل
-                    </button>
+                    </motion.button>
                   </div>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
 
             {/* El Shorouk Branch */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 shadow-lg transition-colors duration-200">
+            <motion.div 
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 shadow-lg transition-colors duration-200"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               <h3 className="text-xl sm:text-2xl font-bold text-brown-800 dark:text-brown-200 mb-6 sm:mb-8 text-center flex items-center justify-center gap-2">
                 <Building2 className="w-6 h-6 text-brown-600 dark:text-brown-300" />
                 فرع الشروق
@@ -138,7 +173,13 @@ const Contact: React.FC = () => {
 
               <div className="space-y-4 sm:space-y-6">
                 {/* WhatsApp El Shorouk */}
-                <div className="flex items-start gap-4">
+                <motion.div 
+                  className="flex items-start gap-4"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.3 }}
+                >
                   <div className="bg-green-100 dark:bg-green-900 p-3 rounded-lg transition-colors duration-200">
                     <MessageCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
                   </div>
@@ -152,17 +193,25 @@ const Contact: React.FC = () => {
                     >
                       01122004410
                     </p>
-                    <button
+                    <motion.button
                       onClick={handleWhatsAppContactShorouk}
                       className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
                       راسلنا على واتساب
-                    </button>
+                    </motion.button>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* El Shorouk Location */}
-                <div className="flex items-start gap-4">
+                <motion.div 
+                  className="flex items-start gap-4"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.4 }}
+                >
                   <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg transition-colors duration-200">
                     <MapPin className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                   </div>
@@ -173,27 +222,42 @@ const Contact: React.FC = () => {
                     <p className="text-gray-700 dark:text-gray-300 mb-2">
                       الشروق
                     </p>
-                    <button
+                    <motion.button
                       onClick={handleShoroukLocation}
                       className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
                       افتح الموقع على خرائط جوجل
-                    </button>
+                    </motion.button>
                   </div>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Additional Contact Information */}
-          <div className="mb-12 sm:mb-16">
+          <motion.div 
+            className="mb-12 sm:mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <h3 className="text-xl sm:text-2xl font-bold text-brown-800 dark:text-brown-200 mb-6 sm:mb-8 text-center">
               طرق التواصل الإضافية
             </h3>
 
             <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {/* Email */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 shadow-lg text-center transition-colors duration-200">
+              <motion.div 
+                className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 shadow-lg text-center transition-colors duration-200"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+                whileHover={{ y: -5 }}
+              >
                 <div className="bg-red-100 dark:bg-red-900 p-3 rounded-lg inline-block mb-4 transition-colors duration-200">
                   <Mail className="w-6 h-6 text-red-600 dark:text-red-400" />
                 </div>
@@ -206,16 +270,25 @@ const Contact: React.FC = () => {
                 >
                   info@almasahroastery.com
                 </p>
-                <button
+                <motion.button
                   onClick={handleEmailContact}
                   className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   أرسل إيميل
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
 
               {/* Instagram */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg text-center transition-colors duration-200">
+              <motion.div 
+                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg text-center transition-colors duration-200"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.2 }}
+                whileHover={{ y: -5 }}
+              >
                 <div className="bg-pink-100 dark:bg-pink-900 p-3 rounded-lg inline-block mb-4 transition-colors duration-200">
                   <Instagram className="w-6 h-6 text-pink-600 dark:text-pink-400" />
                 </div>
@@ -228,16 +301,25 @@ const Contact: React.FC = () => {
                 >
                   @almasah_roastery
                 </p>
-                <button
+                <motion.button
                   onClick={handleInstagramVisit}
                   className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   تابعنا
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
 
               {/* Facebook */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg text-center transition-colors duration-200">
+              <motion.div 
+                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg text-center transition-colors duration-200"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.3 }}
+                whileHover={{ y: -5 }}
+              >
                 <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg inline-block mb-4 transition-colors duration-200">
                   <Facebook className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                 </div>
@@ -247,16 +329,25 @@ const Contact: React.FC = () => {
                 <p className="text-gray-700 dark:text-gray-300 mb-3">
                   صفحتنا الرسمية
                 </p>
-                <button
+                <motion.button
                   onClick={handleFacebookVisit}
                   className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   زور صفحتنا
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
 
               {/* TikTok */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg text-center transition-colors duration-200">
+              <motion.div 
+                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg text-center transition-colors duration-200"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.4 }}
+                whileHover={{ y: -5 }}
+              >
                 <div className="bg-gray-100 dark:bg-gray-600 p-3 rounded-lg inline-block mb-4 transition-colors duration-200">
                   <Music2 className="w-6 h-6 text-gray-600 dark:text-gray-300" />
                 </div>
@@ -269,20 +360,28 @@ const Contact: React.FC = () => {
                 >
                   @almasahroastery
                 </p>
-                <button
+                <motion.button
                   onClick={handleTikTokVisit}
                   className="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   شاهد فيديوهاتنا
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Working Hours and Quick Order */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {/* Working Hours */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 shadow-lg transition-colors duration-200">
+            <motion.div 
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 shadow-lg transition-colors duration-200"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               <h3 className="text-xl sm:text-2xl font-bold text-brown-800 dark:text-brown-200 mb-6 text-center flex items-center justify-center gap-2">
                 <Clock className="w-6 h-6 text-brown-600 dark:text-brown-300" />
                 ساعات العمل
@@ -305,10 +404,16 @@ const Contact: React.FC = () => {
                   </span>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Quick Order Section */}
-            <div className="bg-gradient-to-br from-gold-50 to-brown-50 dark:from-gray-700 dark:to-gray-600 rounded-xl p-6 sm:p-8 shadow-lg transition-colors duration-200">
+            <motion.div 
+              className="bg-gradient-to-br from-gold-50 to-brown-50 dark:from-gray-700 dark:to-gray-600 rounded-xl p-6 sm:p-8 shadow-lg transition-colors duration-200"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
               <h3 className="text-xl sm:text-2xl font-bold text-brown-800 dark:text-brown-200 mb-6 text-center">
                 🚀 اطلب الآن!
               </h3>
@@ -316,22 +421,26 @@ const Contact: React.FC = () => {
                 جرب مشروباتنا المميزة واستمتع بطعم لا يُنسى
               </p>
               <div className="grid grid-cols-1 xs:grid-cols-2 gap-3">
-                <button
+                <motion.button
                   onClick={handleWhatsAppContact}
                   className="bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-lg font-bold text-sm transition-colors flex items-center justify-center gap-2"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <MessageCircle className="w-5 h-5" />
                   فرع القاهرة
-                </button>
-                <button
+                </motion.button>
+                <motion.button
                   onClick={handleWhatsAppContactShorouk}
                   className="bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-lg font-bold text-sm transition-colors flex items-center justify-center gap-2"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <MessageCircle className="w-5 h-5" />
                   فرع الشروق
-                </button>
+                </motion.button>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

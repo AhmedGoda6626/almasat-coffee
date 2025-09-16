@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useStore } from '../store/useStore';
 import DarkModeToggle from './DarkModeToggle';
+import { motion } from 'framer-motion';
 
 const Header: React.FC = () => {
   const { getCartItemsCount, currentUser, logout } = useStore();
@@ -44,7 +45,12 @@ const Header: React.FC = () => {
   const isAdmin = currentUser?.role === 'admin' || currentUser?.role === 'manager';
 
   return (
-    <header className="bg-white dark:bg-gray-800 shadow-lg sticky top-0 z-50 transition-colors duration-200">
+    <motion.header 
+      className="bg-white dark:bg-gray-800 shadow-lg sticky top-0 z-50 transition-colors duration-200"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo and Brand */}
@@ -158,9 +164,18 @@ const Header: React.FC = () => {
         </div>
 
         {/* Mobile Navigation Menu */}
-        <div className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-          isMobileMenuOpen ? 'max-h-80 opacity-100 mt-4' : 'max-h-0 opacity-0'
-        }`}>
+        <motion.div 
+          className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
+            isMobileMenuOpen ? 'max-h-80 opacity-100 mt-4' : 'max-h-0 opacity-0'
+          }`}
+          initial={false}
+          animate={{ 
+            maxHeight: isMobileMenuOpen ? 320 : 0,
+            opacity: isMobileMenuOpen ? 1 : 0,
+            marginTop: isMobileMenuOpen ? 16 : 0
+          }}
+          transition={{ duration: 0.3 }}
+        >
           <nav className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 space-y-3">
             <button
               onClick={() => scrollToSection('hero')}
@@ -228,9 +243,9 @@ const Header: React.FC = () => {
               </div>
             </div>
           </nav>
-        </div>
+        </motion.div>
       </div>
-    </header>
+    </motion.header>
   );
 };
 

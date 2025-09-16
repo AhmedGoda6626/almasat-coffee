@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const About: React.FC = () => {
   return (
@@ -6,16 +7,28 @@ const About: React.FC = () => {
       <div className="container mx-auto px-3 sm:px-4 lg:px-6">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12 sm:mb-16">
+          <motion.div 
+            className="text-center mb-12 sm:mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <h2 className="text-3xl sm:text-4xl font-bold text-brown-800 dark:text-brown-200 mb-3 sm:mb-4">عن محمصة الماسة</h2>
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 px-4 sm:px-0">
               قصة شغف بالقهوة وحب تقديم الأفضل
             </p>
-          </div>
+          </motion.div>
 
           {/* Story Section */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center mb-12 sm:mb-16">
-            <div className="order-2 lg:order-1">
+            <motion.div 
+              className="order-2 lg:order-1"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
               <h3 className="text-xl sm:text-2xl font-bold text-brown-800 dark:text-brown-200 mb-4 sm:mb-6">قصتنا</h3>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-3 sm:mb-4 text-sm sm:text-base">
                 تأسست محمصة الماسة من حلم بسيط: تقديم أجود أنواع القهوة والمشروبات 
@@ -31,24 +44,51 @@ const About: React.FC = () => {
                 اليوم، نفخر بتقديم أكثر من 52 نوع مشروب مختلف، من القهوة التركي 
                 التقليدي إلى أحدث مشروبات الآيس كريم والمشروبات الباردة.
               </p>
-            </div>
+            </motion.div>
             
-            <div className="text-center">
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               <div className="bg-gradient-to-br from-gold-100 to-brown-100 dark:from-gray-600 dark:to-gray-500 rounded-2xl p-8 transition-colors duration-200">
-                <span className="text-6xl text-brown-600 dark:text-gold-400 block mx-auto mb-4">☕</span>
+                <motion.span 
+                  className="text-6xl text-brown-600 dark:text-gold-400 block mx-auto mb-4"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.4 }}
+                >
+                  ☕
+                </motion.span>
                 <h4 className="text-xl font-bold text-brown-800 dark:text-brown-200 mb-2">رؤيتنا</h4>
                 <p className="text-gray-700 dark:text-gray-300">
                   أن نكون المحمصة الأولى المفضلة لمحبي القهوة في المنطقة
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Values Section */}
-          <div className="mb-16">
+          <motion.div 
+            className="mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <h3 className="text-2xl font-bold text-brown-800 dark:text-brown-200 text-center mb-12">قيمنا ومبادئنا</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="text-center">
+              <motion.div 
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+                whileHover={{ y: -10 }}
+              >
                 <div className="bg-gold-100 dark:bg-gray-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition-colors duration-200">
                   <span className="text-2xl text-gold-600 dark:text-gold-400">🏆</span>
                 </div>
@@ -56,9 +96,16 @@ const About: React.FC = () => {
                 <p className="text-gray-600 dark:text-gray-400 text-sm">
                   نستخدم أجود أنواع البن والمكونات الطبيعية
                 </p>
-              </div>
+              </motion.div>
               
-              <div className="text-center">
+              <motion.div 
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.2 }}
+                whileHover={{ y: -10 }}
+              >
                 <div className="bg-gold-100 dark:bg-gray-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition-colors duration-200">
                   <span className="text-2xl text-gold-600 dark:text-gold-400">❤️</span>
                 </div>
@@ -66,9 +113,16 @@ const About: React.FC = () => {
                 <p className="text-gray-600 dark:text-gray-400 text-sm">
                   نحضر كل مشروب بحب وعناية فائقة
                 </p>
-              </div>
+              </motion.div>
               
-              <div className="text-center">
+              <motion.div 
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.3 }}
+                whileHover={{ y: -10 }}
+              >
                 <div className="bg-gold-100 dark:bg-gray-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition-colors duration-200">
                   <span className="text-2xl text-gold-600 dark:text-gold-400">👥</span>
                 </div>
@@ -76,9 +130,16 @@ const About: React.FC = () => {
                 <p className="text-gray-600 dark:text-gray-400 text-sm">
                   رضا عملائنا هو أولويتنا الأولى
                 </p>
-              </div>
+              </motion.div>
               
-              <div className="text-center">
+              <motion.div 
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.4 }}
+                whileHover={{ y: -10 }}
+              >
                 <div className="bg-gold-100 dark:bg-gray-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition-colors duration-200">
                   <span className="text-2xl text-gold-600 dark:text-gold-400">☕</span>
                 </div>
@@ -86,26 +147,43 @@ const About: React.FC = () => {
                 <p className="text-gray-600 dark:text-gray-400 text-sm">
                   نحافظ على الطعم الأصيل مع لمسة عصرية
                 </p>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Mission Statement */}
-          <div className="bg-gradient-to-r from-gold-50 to-brown-50 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-8 text-center mb-16 transition-colors duration-200">
+          <motion.div 
+            className="bg-gradient-to-r from-gold-50 to-brown-50 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-8 text-center mb-16 transition-colors duration-200"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <h3 className="text-2xl font-bold text-brown-800 dark:text-brown-200 mb-4">رسالتنا</h3>
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
               نسعى لتقديم تجربة قهوة استثنائية لكل عميل، من خلال الجمع بين الجودة العالية 
               والخدمة المتميزة والأسعار المناسبة. هدفنا هو جعل كل زيارة لمحمصة الماسة 
               ذكرى جميلة وتجربة لا تُنسى.
             </p>
-          </div>
+          </motion.div>
 
           {/* Online Presence Section */}
-          <div className="mb-16">
+          <motion.div 
+            className="mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <h3 className="text-2xl font-bold text-brown-800 dark:text-brown-200 text-center mb-12">تابعنا أونلاين</h3>
             <div className="bg-gradient-to-r from-gold-50 to-brown-50 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-8 transition-colors duration-200">
               <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                >
                   <h4 className="text-xl font-bold text-brown-800 dark:text-brown-200 mb-4">اكتشف عالمنا</h4>
                   <p className="text-gray-700 dark:text-gray-300 mb-6">
                     تابعنا على منصات التواصل الاجتماعي للحصول على آخر الأخبار والعروض الخاصة
@@ -128,8 +206,14 @@ const About: React.FC = () => {
                       <span className="text-gray-700 dark:text-gray-300">@almasahroastery - فيديوهات مميزة ومحتوى مبدع</span>
                     </div>
                   </div>
-                </div>
-                <div className="text-center">
+                </motion.div>
+                <motion.div 
+                  className="text-center"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
                   <div className="bg-white dark:bg-gray-700 rounded-xl p-6 shadow-lg transition-colors duration-200">
                     <h5 className="font-bold text-brown-800 dark:text-brown-200 mb-4">معلومات العمل</h5>
                     <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
@@ -139,10 +223,10 @@ const About: React.FC = () => {
                       <p>⏰ يومياً 8:00 ص - 12:00 م</p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

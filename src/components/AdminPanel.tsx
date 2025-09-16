@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useStore } from '../store/useStore';
 import type { Drink } from '../types';
+import { motion } from 'framer-motion';
 
 const AdminPanel: React.FC = () => {
   const { 
@@ -64,7 +65,12 @@ const AdminPanel: React.FC = () => {
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-2 sm:p-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6">
+        <motion.div 
+          className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
               <h1 className="text-2xl sm:text-3xl font-bold text-brown-800 dark:text-brown-200">
@@ -74,34 +80,50 @@ const AdminPanel: React.FC = () => {
                 مرحباً {adminUser?.username} - {adminUser?.role === 'admin' ? 'مدير' : 'مشرف'}
               </p>
             </div>
-            <button
+            <motion.button
               onClick={adminLogout}
               className="w-full sm:w-auto bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               تسجيل الخروج
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Menu Management */}
-          <div className="md:col-span-2">
+          <motion.div 
+            className="md:col-span-2"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6">
               <div className="flex flex-col xs:flex-row justify-between items-start xs:items-center gap-3 mb-4 sm:mb-6">
                 <h2 className="text-lg sm:text-xl font-bold text-brown-800 dark:text-brown-200">
                   إدارة القائمة ({drinks.length} عنصر)
                 </h2>
-                <button
+                <motion.button
                   onClick={() => setShowAddForm(true)}
                   className="w-full xs:w-auto bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   إضافة مشروب جديد
-                </button>
+                </motion.button>
               </div>
 
               <div className="space-y-3 sm:space-y-4 max-h-[500px] overflow-y-auto">
-                {drinks.map((drink) => (
-                  <div key={drink.id} className="border border-gray-200 dark:border-gray-600 rounded-lg p-3 sm:p-4">
+                {drinks.map((drink, index) => (
+                  <motion.div 
+                    key={drink.id} 
+                    className="border border-gray-200 dark:border-gray-600 rounded-lg p-3 sm:p-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    whileHover={{ y: -3 }}
+                  >
                     <div className="flex flex-col sm:flex-row justify-between items-start gap-3">
                       <div className="flex-1">
                         <h3 className="font-bold text-brown-800 dark:text-brown-200 text-sm sm:text-base">
@@ -128,56 +150,75 @@ const AdminPanel: React.FC = () => {
                       </div>
                       
                       <div className="flex flex-wrap gap-2 w-full sm:w-auto">
-                        <button
+                        <motion.button
                           onClick={() => setSelectedDrink(drink)}
                           className="flex-1 bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-xs sm:text-sm transition-colors"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                         >
                           تعديل السعر
-                        </button>
-                        <button
+                        </motion.button>
+                        <motion.button
                           onClick={() => toggleAvailability(drink.id)}
                           className={`flex-1 px-3 py-1 rounded text-xs sm:text-sm transition-colors ${
                             drink.isAvailable
                               ? 'bg-yellow-500 hover:bg-yellow-600 text-white'
                               : 'bg-green-500 hover:bg-green-600 text-white'
                           }`}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                         >
                           {drink.isAvailable ? 'إيقاف' : 'تفعيل'}
-                        </button>
-                        <button
+                        </motion.button>
+                        <motion.button
                           onClick={() => deleteDrink(drink.id)}
                           className="flex-1 bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs sm:text-sm transition-colors"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                         >
                           حذف
-                        </button>
+                        </motion.button>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Price History */}
-          <div className="md:col-span-1">
+          <motion.div 
+            className="md:col-span-1"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6">
               <div className="flex justify-between items-center mb-3 sm:mb-4">
                 <h2 className="text-lg sm:text-xl font-bold text-brown-800 dark:text-brown-200">
                   تاريخ الأسعار
                 </h2>
-                <button
+                <motion.button
                   onClick={() => setShowPriceHistory(!showPriceHistory)}
                   className="text-gold-600 hover:text-gold-700 text-sm"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   {showPriceHistory ? 'إخفاء' : 'عرض الكل'}
-                </button>
+                </motion.button>
               </div>
               
               <div className="space-y-2 sm:space-y-3 max-h-64 overflow-y-auto">
-                {showPriceHistory && priceHistory.slice(0, 10).map((entry) => {
+                {showPriceHistory && priceHistory.slice(0, 10).map((entry, index) => {
                   const drink = drinks.find(d => d.id === entry.drinkId);
                   return (
-                    <div key={entry.id} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-2 sm:p-3">
+                    <motion.div 
+                      key={entry.id} 
+                      className="bg-gray-50 dark:bg-gray-700 rounded-lg p-2 sm:p-3"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                    >
                       <div className="text-sm font-medium text-brown-800 dark:text-brown-200 line-clamp-1">
                         {drink?.name}
                       </div>
@@ -192,18 +233,28 @@ const AdminPanel: React.FC = () => {
                           السبب: {entry.reason}
                         </div>
                       )}
-                    </div>
+                    </motion.div>
                   );
                 })}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Add Drink Modal */}
         {showAddForm && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 w-full max-w-md mx-auto">
+          <motion.div 
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div 
+              className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 w-full max-w-md mx-auto"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
               <h3 className="text-lg sm:text-xl font-bold text-brown-800 dark:text-brown-200 mb-3 sm:mb-4">
                 إضافة مشروب جديد
               </h3>
@@ -256,29 +307,43 @@ const AdminPanel: React.FC = () => {
                 </div>
                 
                 <div className="flex gap-2 sm:gap-3">
-                  <button
+                  <motion.button
                     type="submit"
                     className="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg font-medium text-sm sm:text-base"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     إضافة
-                  </button>
-                  <button
+                  </motion.button>
+                  <motion.button
                     type="button"
                     onClick={() => setShowAddForm(false)}
                     className="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-2 rounded-lg font-medium text-sm sm:text-base"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     إلغاء
-                  </button>
+                  </motion.button>
                 </div>
               </form>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         )}
 
         {/* Price Update Modal */}
         {selectedDrink && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 w-full max-w-md mx-auto">
+          <motion.div 
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div 
+              className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 w-full max-w-md mx-auto"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
               <h3 className="text-lg sm:text-xl font-bold text-brown-800 dark:text-brown-200 mb-3 sm:mb-4">
                 تعديل سعر {selectedDrink.name}
               </h3>
@@ -307,22 +372,26 @@ const AdminPanel: React.FC = () => {
                 />
                 
                 <div className="flex gap-2 sm:gap-3">
-                  <button
+                  <motion.button
                     onClick={() => handleUpdatePrice(selectedDrink.id)}
                     className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg font-medium text-sm sm:text-base"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     تحديث السعر
-                  </button>
-                  <button
+                  </motion.button>
+                  <motion.button
                     onClick={() => setSelectedDrink(null)}
                     className="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-2 rounded-lg font-medium text-sm sm:text-base"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     إلغاء
-                  </button>
+                  </motion.button>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         )}
       </div>
     </div>

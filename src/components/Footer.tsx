@@ -1,5 +1,6 @@
 import React from 'react';
-import { Phone, Instagram, Facebook, Music } from "lucide-react"; // أو أيقونات مناسبة
+import { Phone, Instagram, Facebook, Music } from "lucide-react";
+import { motion } from 'framer-motion';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -33,154 +34,231 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
-          <div className="lg:col-span-2">
-  <div className="flex items-center space-x-4 space-x-reverse mb-6">
-    <div className="w-12 h-12 bg-gradient-to-br from-gold-500 to-gold-600 rounded-full flex items-center justify-center">
-      <span className="text-xl text-white">☕</span>
-    </div>
-    <div>
-      <h3 className="text-xl font-bold">محمصة الماسة</h3>
-      <p className="text-gold-200">Almasat Roastery</p>
-    </div>
-  </div>
-  <p className="text-gray-300 leading-relaxed mb-6">
-    نقدم لك أجود أنواع القهوة والمشروبات الساخنة والباردة في أجواء مميزة. 
-    أكثر من 52 نوع مشروب مختلف لتناسب جميع الأذواق.
-  </p>
-  <div className="flex space-x-4 space-x-reverse">
-    <button
-      onClick={handleWhatsAppContact}
-      className="bg-green-500 hover:bg-green-600 p-3 rounded-lg transition-colors"
-      aria-label="واتساب"
-    >
-      <Phone className="w-5 h-5 text-white" />
-    </button>
-    <button
-      onClick={handleInstagramVisit}
-      className="bg-pink-500 hover:bg-pink-600 p-3 rounded-lg transition-colors"
-      aria-label="إنستجرام"
-    >
-      <Instagram className="w-5 h-5 text-white" />
-    </button>
-    <button
-      onClick={handleFacebookVisit}
-      className="bg-blue-500 hover:bg-blue-600 p-3 rounded-lg transition-colors"
-      aria-label="فيسبوك"
-    >
-      <Facebook className="w-5 h-5 text-white" />
-    </button>
-    <button
-      onClick={handleTikTokVisit}
-      className="bg-gray-700 hover:bg-gray-800 p-3 rounded-lg transition-colors"
-      aria-label="تيك توك"
-    >
-      <Music className="w-5 h-5 text-white" />
-    </button>
-  </div>
-</div>
+          <motion.div 
+            className="lg:col-span-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex items-center space-x-4 space-x-reverse mb-6">
+              <motion.div 
+                className="w-12 h-12 bg-gradient-to-br from-gold-500 to-gold-600 rounded-full flex items-center justify-center"
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.2 }}
+              >
+                <span className="text-xl text-white">☕</span>
+              </motion.div>
+              <div>
+                <h3 className="text-xl font-bold">محمصة الماسة</h3>
+                <p className="text-gold-200">Almasat Roastery</p>
+              </div>
+            </div>
+            <p className="text-gray-300 leading-relaxed mb-6">
+              نقدم لك أجود أنواع القهوة والمشروبات الساخنة والباردة في أجواء مميزة. 
+              أكثر من 52 نوع مشروب مختلف لتناسب جميع الأذواق.
+            </p>
+            <div className="flex space-x-4 space-x-reverse">
+              <motion.button
+                onClick={handleWhatsAppContact}
+                className="bg-green-500 hover:bg-green-600 p-3 rounded-lg transition-colors"
+                aria-label="واتساب"
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Phone className="w-5 h-5 text-white" />
+              </motion.button>
+              <motion.button
+                onClick={handleInstagramVisit}
+                className="bg-pink-500 hover:bg-pink-600 p-3 rounded-lg transition-colors"
+                aria-label="إنستجرام"
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Instagram className="w-5 h-5 text-white" />
+              </motion.button>
+              <motion.button
+                onClick={handleFacebookVisit}
+                className="bg-blue-500 hover:bg-blue-600 p-3 rounded-lg transition-colors"
+                aria-label="فيسبوك"
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Facebook className="w-5 h-5 text-white" />
+              </motion.button>
+              <motion.button
+                onClick={handleTikTokVisit}
+                className="bg-gray-700 hover:bg-gray-800 p-3 rounded-lg transition-colors"
+                aria-label="تيك توك"
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Music className="w-5 h-5 text-white" />
+              </motion.button>
+            </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             <h4 className="text-lg font-bold mb-6 text-gold-300">روابط سريعة</h4>
             <ul className="space-y-3">
               <li>
-                <button
+                <motion.button
                   onClick={() => scrollToSection('hero')}
                   className="text-gray-300 hover:text-gold-300 transition-colors"
+                  whileHover={{ x: 5 }}
                 >
                   الرئيسية
-                </button>
+                </motion.button>
               </li>
               <li>
-                <button
+                <motion.button
                   onClick={() => scrollToSection('menu')}
                   className="text-gray-300 hover:text-gold-300 transition-colors"
+                  whileHover={{ x: 5 }}
                 >
                   قائمة المشروبات
-                </button>
+                </motion.button>
               </li>
               <li>
-                <button
+                <motion.button
                   onClick={() => scrollToSection('about')}
                   className="text-gray-300 hover:text-gold-300 transition-colors"
+                  whileHover={{ x: 5 }}
                 >
                   عن المحمصة
-                </button>
+                </motion.button>
               </li>
               <li>
-                <button
+                <motion.button
                   onClick={() => scrollToSection('contact')}
                   className="text-gray-300 hover:text-gold-300 transition-colors"
+                  whileHover={{ x: 5 }}
                 >
                   التواصل
-                </button>
+                </motion.button>
               </li>
               <li>
-                <button
+                <motion.button
                   onClick={() => scrollToSection('cart')}
                   className="text-gray-300 hover:text-gold-300 transition-colors"
+                  whileHover={{ x: 5 }}
                 >
                   سلة المشروبات
-                </button>
+                </motion.button>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <h4 className="text-lg font-bold mb-6 text-gold-300">معلومات التواصل</h4>
             <div className="space-y-4">
-              <div className="flex items-center space-x-3 space-x-reverse">
+              <motion.div 
+                className="flex items-center space-x-3 space-x-reverse"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.3 }}
+              >
                 <span className="text-lg text-gold-400">📞</span>
                 <div>
                   <p className="text-gray-300" dir="ltr">010 9898 1616</p>
                   <p className="text-sm text-gray-400">للطلبات والاستفسارات</p>
                 </div>
-              </div>
-              <div className="flex items-center space-x-3 space-x-reverse">
+              </motion.div>
+              <motion.div 
+                className="flex items-center space-x-3 space-x-reverse"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.4 }}
+              >
                 <span className="text-lg text-gold-400">📍</span>
                 <div>
                   <p className="text-gray-300">الدقهلية - بلقاس</p>
                   <p className="text-sm text-gray-400">جمهورية مصر العربية</p>
                 </div>
-              </div>
-              <div className="flex items-center space-x-3 space-x-reverse">
+              </motion.div>
+              <motion.div 
+                className="flex items-center space-x-3 space-x-reverse"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+              >
                 <span className="text-lg text-gold-400">☕</span>
                 <div>
                   <p className="text-gray-300">السبت - الخميس</p>
                   <p className="text-sm text-gray-400">8:00 ص - 12:00 م</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-brown-700 mt-12 pt-8">
+        <motion.div 
+          className="border-t border-brown-700 mt-12 pt-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
               © {currentYear} محمصة الماسة. جميع الحقوق محفوظة.
             </p>
             <div className="flex space-x-6 space-x-reverse text-sm text-gray-400">
-              <a href="#" className="hover:text-gold-300 transition-colors">
+              <motion.a 
+                href="#" 
+                className="hover:text-gold-300 transition-colors"
+                whileHover={{ y: -2 }}
+              >
                 سياسة الخصوصية
-              </a>
-              <a href="#" className="hover:text-gold-300 transition-colors">
+              </motion.a>
+              <motion.a 
+                href="#" 
+                className="hover:text-gold-300 transition-colors"
+                whileHover={{ y: -2 }}
+              >
                 الشروط والأحكام
-              </a>
-              <a href="#" className="hover:text-gold-300 transition-colors">
+              </motion.a>
+              <motion.a 
+                href="#" 
+                className="hover:text-gold-300 transition-colors"
+                whileHover={{ y: -2 }}
+              >
                 خدمة العملاء
-              </a>
+              </motion.a>
             </div>
           </div>
           
           {/* Made with love */}
-          <div className="text-center mt-6 pt-6 border-t border-brown-700">
+          <motion.div 
+            className="text-center mt-6 pt-6 border-t border-brown-700"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             <p className="text-gray-500 text-sm">
               صُنع بـ <span className="text-red-400">❤️</span> لمحبي القهوة في مصر
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </footer>
   );

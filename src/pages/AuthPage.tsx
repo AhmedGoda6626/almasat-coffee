@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../store/useStore';
 import DarkModeToggle from '../components/DarkModeToggle';
+import { motion } from 'framer-motion';
 
 const AuthPage: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -66,27 +67,53 @@ const AuthPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gold-50 via-brown-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center p-4">
-      <div className="absolute top-4 left-4">
+      <motion.div 
+        className="absolute top-4 left-4"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
         <DarkModeToggle />
-      </div>
-      <div className="w-full max-w-md">
+      </motion.div>
+      
+      <motion.div 
+        className="w-full max-w-md"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         {/* Logo and Welcome */}
-        <div className="text-center mb-8">
-          <div className="w-20 h-20 bg-gradient-to-br from-gold-500 to-brown-400 rounded-full flex items-center justify-center mx-auto mb-4">
+        <motion.div 
+          className="text-center mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <motion.div 
+            className="w-20 h-20 bg-gradient-to-br from-gold-500 to-brown-400 rounded-full flex items-center justify-center mx-auto mb-4"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
+          >
             <span className="text-white font-bold text-2xl">الماسة</span>
-          </div>
+          </motion.div>
           <h1 className="text-3xl font-bold text-brown-800 dark:text-brown-200 mb-2">
             محمصة الماسة
           </h1>
           <p className="text-gray-600 dark:text-gray-300 text-sm">
             {isLogin ? 'مرحباً بعودتك! يرجى تسجيل الدخول' : 'انضم إلينا واستمتع بأفضل المشروبات'}
           </p>
-        </div>
+        </motion.div>
 
         {/* Auth Form */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 sm:p-8">
+        <motion.div 
+          className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 sm:p-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <div className="flex mb-6">
-            <button
+            <motion.button
               onClick={() => {
                 setIsLogin(true);
                 setError('');
@@ -97,10 +124,12 @@ const AuthPage: React.FC = () => {
                   ? 'text-gold-600 border-b-2 border-gold-500'
                   : 'text-gray-500 dark:text-gray-400 hover:text-gold-500'
               }`}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
               تسجيل الدخول
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={() => {
                 setIsLogin(false);
                 setError('');
@@ -111,14 +140,26 @@ const AuthPage: React.FC = () => {
                   ? 'text-gold-600 border-b-2 border-gold-500'
                   : 'text-gray-500 dark:text-gray-400 hover:text-gold-500'
               }`}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
               إنشاء حساب
-            </button>
+            </motion.button>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <motion.form 
+            onSubmit={handleSubmit} 
+            className="space-y-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.4 }}
+          >
             {!isLogin && (
-              <div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+              >
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   اسم المستخدم
                 </label>
@@ -131,10 +172,14 @@ const AuthPage: React.FC = () => {
                   placeholder="اسم المستخدم"
                   required={!isLogin}
                 />
-              </div>
+              </motion.div>
             )}
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3, delay: 0.6 }}
+            >
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 البريد الإلكتروني
               </label>
@@ -147,9 +192,13 @@ const AuthPage: React.FC = () => {
                 placeholder="البريد الإلكتروني"
                 required
               />
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3, delay: 0.7 }}
+            >
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 كلمة المرور
               </label>
@@ -162,10 +211,14 @@ const AuthPage: React.FC = () => {
                 placeholder="كلمة المرور"
                 required
               />
-            </div>
+            </motion.div>
 
             {!isLogin && (
-              <div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 0.8 }}
+              >
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   تأكيد كلمة المرور
                 </label>
@@ -178,19 +231,29 @@ const AuthPage: React.FC = () => {
                   placeholder="تأكيد كلمة المرور"
                   required={!isLogin}
                 />
-              </div>
+              </motion.div>
             )}
 
             {error && (
-              <div className="bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-600 text-red-700 dark:text-red-400 px-4 py-3 rounded-lg text-sm">
+              <motion.div 
+                className="bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-600 text-red-700 dark:text-red-400 px-4 py-3 rounded-lg text-sm"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+              >
                 {error}
-              </div>
+              </motion.div>
             )}
 
-            <button
+            <motion.button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 disabled:from-gray-400 disabled:to-gray-500 text-white py-3 px-4 rounded-lg font-bold transition-all duration-200 transform hover:scale-105 disabled:transform-none"
+              className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 disabled:from-gray-400 disabled:to-gray-500 text-white py-3 px-4 rounded-lg font-bold transition-all duration-200"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3, delay: 0.9 }}
             >
               {isLoading ? (
                 <span className="flex items-center justify-center">
@@ -200,11 +263,16 @@ const AuthPage: React.FC = () => {
               ) : (
                 isLogin ? 'تسجيل الدخول' : 'إنشاء حساب'
               )}
-            </button>
-          </form>
+            </motion.button>
+          </motion.form>
 
           {/* Demo Accounts Info */}
-          <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+          <motion.div 
+            className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg border border-blue-200 dark:border-blue-800"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1 }}
+          >
             <h3 className="font-bold text-sm text-blue-800 dark:text-blue-300 mb-2">
               📋 حسابات التجربة:
             </h3>
@@ -215,15 +283,20 @@ const AuthPage: React.FC = () => {
                 💡 أو قم بإنشاء حساب جديد كمستخدم عادي
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Footer */}
-        <div className="text-center mt-6 text-sm text-gray-600 dark:text-gray-400">
+        <motion.div 
+          className="text-center mt-6 text-sm text-gray-600 dark:text-gray-400"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 1.1 }}
+        >
           <p>محمصة الماسة © 2024</p>
           <p>جميع الحقوق محفوظة</p>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
