@@ -8,6 +8,7 @@ export const drinks: Drink[] = [
     price: 25,
     category: 'hot',
     description: 'قهوة تركي أصلي محضر بطريقة تقليدية',
+    image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=300&fit=crop',
     isAvailable: true
   },
   {
@@ -16,6 +17,7 @@ export const drinks: Drink[] = [
     price: 30,
     category: 'hot',
     description: 'قهوة تركي مضاعف للمحبين القهوة المركزة',
+    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop',
     isAvailable: true
   },
   {
@@ -24,6 +26,7 @@ export const drinks: Drink[] = [
     price: 25,
     category: 'hot',
     description: 'إسبريسو إيطالي أصيل',
+    image: 'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400&h=300&fit=crop',
     isAvailable: true
   },
   {
@@ -88,6 +91,7 @@ export const drinks: Drink[] = [
     price: 45,
     category: 'hot',
     description: 'كابتشينو إيطالي بالحليب المزبد',
+    image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&h=300&fit=crop',
     isAvailable: true
   },
   {
@@ -96,6 +100,7 @@ export const drinks: Drink[] = [
     price: 40,
     category: 'hot',
     description: 'لاتيه كريمي بالحليب الطازج',
+    image: 'https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=400&h=300&fit=crop',
     isAvailable: true
   },
   {
@@ -186,6 +191,7 @@ export const drinks: Drink[] = [
     price: 40,
     category: 'cold',
     description: 'مشروب بارد بطعم الفانيليا الكريمي',
+    image: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=300&fit=crop',
     isAvailable: true
   },
   {
@@ -194,6 +200,7 @@ export const drinks: Drink[] = [
     price: 40,
     category: 'cold',
     description: 'مشروب بارد بالشوكولاتة الفاخرة',
+    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop',
     isAvailable: true
   },
   {
@@ -308,6 +315,7 @@ export const drinks: Drink[] = [
     price: 25,
     category: 'icecream',
     description: 'آيس كريم فانيليا كريمي',
+    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&h=300&fit=crop',
     isAvailable: true
   },
   {
@@ -316,6 +324,7 @@ export const drinks: Drink[] = [
     price: 25,
     category: 'icecream',
     description: 'آيس كريم شوكولاتة فاخر',
+    image: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=300&fit=crop',
     isAvailable: true
   },
   {
