@@ -114,7 +114,7 @@ const AdminPage: React.FC = () => {
     }
   };
 
-  const handleEditDrink = (drink: unknown) => {
+  const handleEditDrink = (drink: any) => {
     // إغلاق نموذج السعر إذا كان مفتوحاً
     setSelectedDrink(null);
 
