@@ -15,14 +15,13 @@ const DrinkManagement: React.FC = () => {
     description: '',
     price: '',
     category: 'hot' as 'hot' | 'cold' | 'icecream',
-    isAvailable: true,
-    isFeatured: false
+    isAvailable: true
   });
 
   // Filter drinks based on search and category
   const filteredDrinks = drinks.filter(drink => {
     const matchesSearch = drink.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          drink.description.toLowerCase().includes(searchTerm.toLowerCase());
+                          (drink.description && drink.description.toLowerCase().includes(searchTerm.toLowerCase()));
     const matchesCategory = selectedCategory === 'all' || drink.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
@@ -35,16 +34,14 @@ const DrinkManagement: React.FC = () => {
         description: newDrinkForm.description,
         price: parseFloat(newDrinkForm.price),
         category: newDrinkForm.category,
-        isAvailable: newDrinkForm.isAvailable,
-        isFeatured: newDrinkForm.isFeatured
+        isAvailable: newDrinkForm.isAvailable
       });
       setNewDrinkForm({
         name: '',
         description: '',
         price: '',
         category: 'hot',
-        isAvailable: true,
-        isFeatured: false
+        isAvailable: true
       });
       setShowAddForm(false);
     }
@@ -58,8 +55,7 @@ const DrinkManagement: React.FC = () => {
         description: newDrinkForm.description,
         price: parseFloat(newDrinkForm.price),
         category: newDrinkForm.category,
-        isAvailable: newDrinkForm.isAvailable,
-        isFeatured: newDrinkForm.isFeatured
+        isAvailable: newDrinkForm.isAvailable
       });
       setEditingDrink(null);
       setNewDrinkForm({
@@ -67,8 +63,7 @@ const DrinkManagement: React.FC = () => {
         description: '',
         price: '',
         category: 'hot',
-        isAvailable: true,
-        isFeatured: false
+        isAvailable: true
       });
     }
   };
@@ -77,11 +72,10 @@ const DrinkManagement: React.FC = () => {
     setEditingDrink(drink);
     setNewDrinkForm({
       name: drink.name,
-      description: drink.description,
+      description: drink.description || '',
       price: drink.price.toString(),
       category: drink.category,
-      isAvailable: drink.isAvailable,
-      isFeatured: drink.isFeatured || false
+      isAvailable: drink.isAvailable !== undefined ? drink.isAvailable : true
     });
     setShowAddForm(true);
   };
@@ -117,7 +111,7 @@ const DrinkManagement: React.FC = () => {
           <div>
             <select
               value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value as any)}
+              onChange={(e) => setSelectedCategory(e.target.value as 'all' | 'hot' | 'cold' | 'icecream')}
               className="w-full md:w-auto px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
             >
               <option value="all">جميع الفئات</option>
@@ -134,8 +128,7 @@ const DrinkManagement: React.FC = () => {
                 description: '',
                 price: '',
                 category: 'hot',
-                isAvailable: true,
-                isFeatured: false
+                isAvailable: true
               });
               setShowAddForm(true);
             }}
@@ -167,15 +160,11 @@ const DrinkManagement: React.FC = () => {
             <div className="p-5">
               <div className="flex justify-between items-start mb-3">
                 <h3 className="font-bold text-lg text-brown-800 dark:text-brown-200">{drink.name}</h3>
-                {drink.isFeatured && (
-                  <span className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 text-xs px-2 py-1 rounded">
-                    مميز
-                  </span>
-                )}
+                
               </div>
               
               <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-2">
-                {drink.description}
+                {drink.description || 'لا يوجد وصف'}
               </p>
               
               <div className="flex flex-wrap gap-2 mb-4">
@@ -296,16 +285,7 @@ const DrinkManagement: React.FC = () => {
                   <label htmlFor="available" className="text-gray-700 dark:text-gray-300">متاح للطلب</label>
                 </div>
                 
-                <div className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    checked={newDrinkForm.isFeatured}
-                    onChange={(e) => setNewDrinkForm({...newDrinkForm, isFeatured: e.target.checked})}
-                    className="rounded"
-                    id="featured"
-                  />
-                  <label htmlFor="featured" className="text-gray-700 dark:text-gray-300">مميز</label>
-                </div>
+                
               </div>
               
               <div className="flex gap-3">
