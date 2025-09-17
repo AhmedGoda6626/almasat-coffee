@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useStore } from '../store/useStore';
 import DarkModeToggle from '../components/DarkModeToggle';
 import { motion } from 'framer-motion';
+
+// Define the type for location state
+interface LocationState {
+  from?: string;
+}
 
 const AuthPage: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -15,6 +20,7 @@ const AuthPage: React.FC = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { login, register } = useStore();
 
@@ -30,8 +36,9 @@ const AuthPage: React.FC = () => {
         if (!success) {
           setError('البريد الإلكتروني أو كلمة المرور غير صحيحة');
         } else {
-          // Login successful, navigate to homepage
-          navigate('/');
+          // Login successful, navigate to the page they came from or homepage
+          const from = (location.state as LocationState)?.from || '/';
+          navigate(from, { replace: true });
         }
       } else {
         // Register
@@ -50,7 +57,8 @@ const AuthPage: React.FC = () => {
           setError('المستخدم موجود بالفعل');
         } else {
           // Registration successful, navigate to homepage
-          navigate('/');
+          const from = (location.state as LocationState)?.from || '/';
+          navigate(from, { replace: true });
         }
       }
     } finally {

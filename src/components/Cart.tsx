@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../store/useStore';
 import { motion } from 'framer-motion';
 
 const Cart: React.FC = () => {
-  const { cart, updateQuantity, removeFromCart, clearCart, getCartTotal, selectedBranch, setSelectedBranch } = useStore();
+  const { cart, updateQuantity, removeFromCart, clearCart, getCartTotal, selectedBranch, setSelectedBranch, isAuthenticated } = useStore();
   const navigate = useNavigate();
+  const [showLoginMessage, setShowLoginMessage] = useState(false);
 
   const handleWhatsAppOrder = () => {
     if (cart.length === 0) return;
+
+    // Check if user is authenticated before placing order
+    if (!isAuthenticated) {
+      // Show message first before redirecting to login
+      setShowLoginMessage(true);
+      // Redirect to login page after a short delay
+      setTimeout(() => {
+        navigate('/auth', { state: { from: '/cart' } });
+      }, 2000); // 2 seconds delay
+      return;
+    }
 
     const orderDetails = cart
       .map(item => `${item.drink.name} - الكمية: ${item.quantity} - السعر: ${item.drink.price * item.quantity} جنيه`)
@@ -88,6 +100,34 @@ ${orderDetails}
     <section id="cart" className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
       <div className="container mx-auto px-3 sm:px-4 lg:px-6">
         <div className="max-w-7xl mx-auto">
+          {/* Login Message Modal */}
+          {showLoginMessage && (
+            <motion.div 
+              className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <motion.div 
+                className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 sm:p-8 max-w-md w-full text-center"
+                initial={{ scale: 0.8, y: 20 }}
+                animate={{ scale: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="text-4xl mb-4">🔒</div>
+                <h3 className="text-xl font-bold text-brown-800 dark:text-brown-200 mb-3">
+                  يجب تسجيل الدخول أولاً
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  يجب عليك تسجيل الدخول لطلب الطلبية وإتمام عملية الشراء
+                </p>
+                <div className="flex justify-center">
+                  <div className="w-8 h-8 border-4 border-gold-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+
           {/* Header */}
           <motion.div 
             className="text-center mb-8 sm:mb-12"
@@ -307,12 +347,26 @@ ${orderDetails}
                   اطلب عبر واتساب
                 </motion.button>
 
+                {!isAuthenticated && (
+                  <motion.div 
+                    className="mt-3 sm:mt-4 text-center"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.6 }}
+                  >
+                    <p className="text-xs sm:text-sm text-red-600 dark:text-red-400">
+                      يجب تسجيل الدخول لإتمام الطلب
+                    </p>
+                  </motion.div>
+                )}
+
                 <motion.div 
                   className="mt-3 sm:mt-4 text-center"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.6 }}
+                  transition={{ duration: 0.3, delay: 0.7 }}
                 >
                   <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                     سيتم توجيهك إلى واتساب لتأكيد الطلب

@@ -44,31 +44,25 @@ const AnimatedRoutes = () => {
             <AdminPage />
           </div>
         } />
+        <Route path="/auth" element={
+          <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+            <AuthPage />
+          </div>
+        } />
       </Routes>
     </AnimatePresence>
   );
 };
 
 function App() {
-  const { initializeDarkMode, isAuthenticated } = useStore();
+  const { initializeDarkMode } = useStore();
 
   // Initialize dark mode on app load
   useEffect(() => {
     initializeDarkMode();
   }, [initializeDarkMode]);
 
-  // If user is not authenticated, show auth page
-  if (!isAuthenticated) {
-    return (
-      <Router>
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
-          <Routes>
-            <Route path="*" element={<AuthPage />} />
-          </Routes>
-        </div>
-      </Router>
-    );
-  }
+  // Removed global authentication check to allow public browsing
 
   return (
     <Router>
