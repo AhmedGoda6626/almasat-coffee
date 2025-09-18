@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
 
   const handleWhatsAppContact = () => {
     const message = encodeURIComponent('مرحباً! أريد الاستفسار عن منتجاتكم في محمصة الماسة 🌟');
-    window.open(`https://wa.me/01098981616?text=${message}`, '_blank');
+    window.open(`https://wa.me/+201098981616?text=${message}`, '_blank');
   };
 
   const handleInstagramVisit = () => {
