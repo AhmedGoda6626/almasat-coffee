@@ -121,7 +121,7 @@ export const drinks: Drink[] = [
   },
   {
     id: '15',
-    name: 'موت أوريو',
+    name: 'هوت أوريو',
     price: 40,
     category: 'hot',
     description: 'مشروب ساخن بطعم الأوريو',
@@ -129,7 +129,7 @@ export const drinks: Drink[] = [
   },
   {
     id: '16',
-    name: 'موت سايدر',
+    name: 'هوت سايدر',
     price: 30,
     category: 'hot',
     description: 'مشروب ساخن بطعم السايدر',
@@ -137,7 +137,7 @@ export const drinks: Drink[] = [
   },
   {
     id: '17',
-    name: 'موت شوكوليت',
+    name: 'هوت شوكوليت',
     price: 30,
     category: 'hot',
     description: 'مشروب ساخن بالشوكولاتة الساخنة',
