@@ -129,7 +129,7 @@ export const drinks: Drink[] = [
   },
   {
     id: '16',
-    name: 'هوت سايدر',
+    name: 'هوت سيدر',
     price: 30,
     category: 'hot',
     description: 'مشروب ساخن بطعم السايدر',
@@ -137,7 +137,7 @@ export const drinks: Drink[] = [
   },
   {
     id: '17',
-    name: 'هوت شوكوليت',
+    name: 'هوت شوكليت',
     price: 30,
     category: 'hot',
     description: 'مشروب ساخن بالشوكولاتة الساخنة',
@@ -229,7 +229,7 @@ export const drinks: Drink[] = [
   },
   {
     id: '28',
-    name: 'كار ميل',
+    name: 'كاراميل',
     price: 40,
     category: 'cold',
     description: 'مشروب بارد بطعم الكراميل الحلو',
@@ -285,7 +285,7 @@ export const drinks: Drink[] = [
   },
   {
     id: '35',
-    name: 'زبادي موت',
+    name: 'زبادي توت',
     price: 50,
     category: 'cold',
     description: 'مشروب بارد بالزبادي الطازج',
@@ -345,7 +345,7 @@ export const drinks: Drink[] = [
   },
   {
     id: '42',
-    name: 'زبادي عوت',
+    name: 'زبادي توت',
     price: 25,
     category: 'icecream',
     description: 'آيس كريم بالزبادي الطبيعي',
