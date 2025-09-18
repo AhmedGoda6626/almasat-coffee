@@ -1,3 +1,4 @@
+/* Tailwind CSS directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,6 +27,7 @@ body {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
+  line-clamp: 1;
 }
 
 .line-clamp-2 {
@@ -33,6 +35,7 @@ body {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 
 .line-clamp-3 {
@@ -40,6 +43,7 @@ body {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
 }
 
 /* Floating cart button animations */
@@ -92,9 +96,53 @@ body {
   transition: opacity 300ms, transform 300ms;
 }
 
-/* Smooth scroll behavior */
+/* Enhanced smooth scroll behavior */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+/* Highlight section animation */
+.highlight-section {
+  animation: highlightPulse 2s ease-in-out, sectionGlow 2s ease-in-out;
+  transform: scale(1.01);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes highlightPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 30px rgba(245, 158, 11, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+  }
+}
+
+@keyframes sectionGlow {
+  0% {
+    background: transparent;
+  }
+  20% {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(245, 158, 11, 0.02) 100%);
+  }
+  80% {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(245, 158, 11, 0.02) 100%);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+/* Scroll animation enhancement */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: auto; /* We'll handle this with JS for better control */
+  }
 }
 
 /* Enhanced button hover effects */
