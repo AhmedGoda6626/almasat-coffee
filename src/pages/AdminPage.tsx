@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useStore } from "../store/useStore";
 import { motion } from "framer-motion";
+import type { Drink } from "../types";
 import {
   PieChart,
   Coffee,
@@ -114,7 +115,7 @@ const AdminPage: React.FC = () => {
     }
   };
 
-  const handleEditDrink = (drink: any) => {
+  const handleEditDrink = (drink: Drink) => {
     // إغلاق نموذج السعر إذا كان مفتوحاً
     setSelectedDrink(null);
 
